@@ -10,6 +10,7 @@ export default function HeroImage() {
         width={680}
         height={(1018 / 1346) * 680}
         className="relative origin-center rotate-[45deg] right-[65px] top-[185px]"
+		priority
       />
     </div>
   );
