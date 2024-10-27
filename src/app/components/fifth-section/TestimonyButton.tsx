@@ -17,6 +17,7 @@ export default function TestimonyButton(props: ButtonProps) {
 		${!disabled ? "hover:text-amber-900 hover:bg-amber-300" : "opacity-50"}`}
       onClick={onClick}
       disabled={disabled}
+      aria-label={direction === "left" ? "Previous" : "Next"}
     >
       {direction === "left" ? (
         <ArrowLeft size={20} strokeWidth={2} />
