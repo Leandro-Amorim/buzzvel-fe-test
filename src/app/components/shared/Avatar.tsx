@@ -13,8 +13,8 @@ export default function Avatar({ image, name, description }: AvatarProps) {
         <Image src={image} alt={name} className="object-cover" fill />
       </div>
       <div className="grow flex flex-col justify-center">
-		<span className="text-slate-900 text-lg">{name}</span>
-		<span className="text-slate-600">{description}</span>
+		<span className="text-slate-900 text-lg line-clamp-1">{name}</span>
+		<span className="text-slate-600 line-clamp-1">{description}</span>
 	  </div>
     </div>
   );

@@ -41,32 +41,51 @@ export default function FifthSection() {
   const [selected, setSelected] = useState(0);
 
   return (
-    <section className="px-20 py-20 bg-purple-900 flex flex-col gap-[104px]">
-      <div className="flex justify-between gap-4">
+    <section
+      className={`
+	px-4 md:px-10 xl:px-20
+	py-12 md:py-16 xl:py-20
+	bg-purple-900 flex flex-col gap-[88px] lg:gap-[104px]`}
+    >
+      <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-6 lg:gap-4">
         <div className="flex flex-col gap-6 grow max-w-[814px]">
           <div className="flex flex-col gap-2">
-            <span className="text-amber-300 font-medium text-xl leading-[22px]">
+            <span
+              className={`text-amber-300 font-medium text-center lg:text-left
+			text-base leading-[18px]
+			md:text-lg md:leading-[20px]
+			xl:text-xl xl:leading-[22px]
+				`}
+            >
               Join other Sun harvesters
             </span>
-            <h2 className="text-white font-extrabold text-[3.5rem] leading-[60px]">
+            <h2
+              className={`text-white text-center lg:text-left
+		  	font-bold text-[2rem] leading-[36px]
+		  	md:text-[3rem] md:leading-[52px]
+			xl:font-extrabold xl:text-[3.5rem] xl:leading-[60px]`}
+            >
               Make something awesome
             </h2>
           </div>
-          <p className="text-white text-xl leading-9">
+          <p
+            className={`text-white text-center lg:text-left
+			text-base leading-snug
+			md:text-lg md:leading-8
+			xl:text-xl xl:leading-9`}
+          >
             Dui euismod iaculis libero, aliquet vitae et elementum porttitor.
             Eleifend mi tristique condimentum congue fusce nunc, donec magnis
             commodo.
           </p>
         </div>
-        <div className="shrink-0 pt-10 pr-10">
+        <div className="shrink-0 lg:pt-10 lg:pr-10">
           <QuoteButton variant={"secondary"} />
         </div>
       </div>
-      <div className="flex flex-col gap-[104px]">
+      <div className="flex flex-col gap-16 md:gap-[104px]">
         <div
-          className="flex gap-6 relative"
-          style={{ left: `-${selected * 364 + selected * 24}px` }}
-        >
+          className="flex gap-6 relative">
           {cards.map((card, index) => (
             <TestimonyCard
               key={index}
@@ -77,7 +96,7 @@ export default function FifthSection() {
             />
           ))}
         </div>
-        <div className="flex gap-6">
+        <div className="flex gap-6 w-full justify-center md:justify-start">
           <TestimonyButton
             direction="left"
             disabled={selected === 0}
