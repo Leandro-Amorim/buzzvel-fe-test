@@ -1,8 +1,20 @@
 import Image from "next/image";
+import * as motion from "framer-motion/client";
+import { type Variant } from "framer-motion";
+
+const heroImageVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.5, delay: 0.8 },
+  },
+} satisfies Record<string, Variant>;
 
 export default function HeroImage() {
   return (
-    <>
+    <motion.div variants={heroImageVariants} initial="hidden" animate="visible">
       <div className="absolute size-6 rounded-full bg-blue-100 top-[334px] right-[90px] md:top-[445px] md:right-[130px] xl:top-[105px] xl:right-[315px] z-[-9]" />
       <div
         className={`
@@ -26,6 +38,6 @@ export default function HeroImage() {
           }}
         />
       </div>
-    </>
+    </motion.div>
   );
 }

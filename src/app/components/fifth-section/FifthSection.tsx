@@ -3,6 +3,37 @@ import { useState } from "react";
 import QuoteButton from "../shared/QuoteButton";
 import TestimonyCard, { CardProps } from "./TestimonyCard";
 import TestimonyButton from "./TestimonyButton";
+import * as motion from "framer-motion/client";
+import { type Variant } from "framer-motion";
+import {
+  descriptionVariants,
+  subtitleVariants,
+  titleVariants,
+} from "@/lib/sharedFramerVariants";
+
+const quoteButtonVariants = {
+  hidden: {
+    y: -10,
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.5, delay: 1 },
+  },
+} satisfies Record<string, Variant>;
+
+const arrowButtonVariants = {
+  hidden: {
+    y: -10,
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: { duration: 0.5, delay: 0.5 },
+  },
+} satisfies Record<string, Variant>;
 
 const cards = [
   {
@@ -47,10 +78,16 @@ export default function FifthSection() {
 	py-12 md:py-16 xl:py-20
 	bg-purple-900 flex flex-col gap-[88px] lg:gap-[104px]`}
     >
-      <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-6 lg:gap-4">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-6 lg:gap-4"
+      >
         <div className="flex flex-col gap-6 grow max-w-[814px]">
           <div className="flex flex-col gap-2">
-            <span
+            <motion.span
+              variants={subtitleVariants}
               className={`text-amber-300 font-medium text-center lg:text-left
 			text-base leading-[18px]
 			md:text-lg md:leading-[20px]
@@ -58,17 +95,19 @@ export default function FifthSection() {
 				`}
             >
               Join other Sun harvesters
-            </span>
-            <h2
+            </motion.span>
+            <motion.h2
+              variants={titleVariants}
               className={`text-white text-center lg:text-left
 		  	font-bold text-[2rem] leading-[36px]
 		  	md:text-[3rem] md:leading-[52px]
 			xl:font-extrabold xl:text-[3.5rem] xl:leading-[60px]`}
             >
               Make something awesome
-            </h2>
+            </motion.h2>
           </div>
-          <p
+          <motion.p
+            variants={descriptionVariants}
             className={`text-white text-center lg:text-left
 			text-base leading-snug
 			md:text-lg md:leading-8
@@ -77,15 +116,31 @@ export default function FifthSection() {
             Dui euismod iaculis libero, aliquet vitae et elementum porttitor.
             Eleifend mi tristique condimentum congue fusce nunc, donec magnis
             commodo.
-          </p>
+          </motion.p>
         </div>
-        <div className="shrink-0 lg:pt-10 lg:pr-10">
+        <motion.div
+          variants={quoteButtonVariants}
+          className="shrink-0 lg:pt-10 lg:pr-10"
+        >
           <QuoteButton variant={"secondary"} />
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
       <div className="flex flex-col gap-16 md:gap-[104px]">
-        <div
-          className="flex gap-6 relative">
+        <motion.div
+          initial={["hidden", "moving"]}
+          whileInView={["visible", "moving"]}
+          viewport={{ once: true }}
+          variants={{
+            hidden: {},
+            visible: {
+              transition: {
+                delayChildren: 0.5,
+                staggerChildren: 0.25,
+              },
+            },
+          }}
+          className="flex gap-6 relative"
+        >
           {cards.map((card, index) => (
             <TestimonyCard
               key={index}
@@ -95,8 +150,14 @@ export default function FifthSection() {
               {...card}
             />
           ))}
-        </div>
-        <div className="flex gap-6 w-full justify-center md:justify-start">
+        </motion.div>
+        <motion.div
+          variants={arrowButtonVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="flex gap-6 w-full justify-center md:justify-start"
+        >
           <TestimonyButton
             direction="left"
             disabled={selected === 0}
@@ -111,7 +172,7 @@ export default function FifthSection() {
               setSelected(selected + 1);
             }}
           />
-        </div>
+        </motion.div>
       </div>
     </section>
   );
