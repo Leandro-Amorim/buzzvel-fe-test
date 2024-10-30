@@ -8,7 +8,7 @@
   <br>
 </h1>
 
-<h4 align="center">A frontend project made in <a href="https://nextjs.org/" target="_blank">Next.js</a> for the Buzzvel 2024 developer test. You can see a working example at <a href="https://buzzvel-fe-test.vercel.app/" target="_blank">buzzvel-fe-test.vercel.app/</a>.</h4>
+<h4 align="center">A front-end project made with <a href="https://nextjs.org/" target="_blank">Next.js</a> for the Buzzvel 2024 developer test. You can see a working example at <a href="https://buzzvel-fe-test.vercel.app/" target="_blank">buzzvel-fe-test.vercel.app/</a>.</h4>
 
 <p align="center">
   <a href="#overview">Overview</a> •
@@ -23,7 +23,7 @@ This project is a conversion of the Figma design provided by Buzzvel into a func
 <br>
 Emphasis was placed on ensuring a seamless experience across devices, with attention to responsive design methodologies.
 <br>
-Additionally, the Framer Motion library was used to create animations that enhances the user experience without hindering the use of the website.
+Additionally, the Framer Motion library was used to create animations that enhance the user experience without hindering the use of the website.
 
 ## Technologies
 
